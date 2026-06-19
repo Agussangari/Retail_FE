@@ -1,0 +1,38 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
+import { Venta } from '../models/venta.model';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class VentasService {
+  private apiUrl = `${environment.apiUrl}/sales`;
+
+  constructor(private http: HttpClient) {}
+
+  getAll(params?: any): Observable<Venta[]> {
+    let httpParams = new HttpParams();
+    if (params) {
+      Object.keys(params).forEach(key => {
+        if (params[key] !== null && params[key] !== undefined) {
+          httpParams = httpParams.set(key, params[key]);
+        }
+      });
+    }
+    return this.http.get<Venta[]>(this.apiUrl, { params: httpParams });
+  }
+
+  getById(id: number): Observable<Venta> {
+    return this.http.get<Venta>(`${this.apiUrl}/${id}`);
+  }
+
+  create(venta: Partial<Venta>): Observable<Venta> {
+    return this.http.post<Venta>(this.apiUrl, venta);
+  }
+
+  anular(id: number): Observable<Venta> {
+    return this.http.put<Venta>(`${this.apiUrl}/${id}/anular`, {});
+  }
+}

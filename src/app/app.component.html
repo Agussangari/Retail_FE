@@ -1,0 +1,29 @@
+<mat-toolbar color="primary" class="header">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Retail System</span>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" opened class="sidenav">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/productos" routerLinkActive="active-link">
+        <mat-icon matListItemIcon>inventory_2</mat-icon>
+        <div matListItemTitle>Productos</div>
+      </a>
+      <a mat-list-item routerLink="/clientes" routerLinkActive="active-link">
+        <mat-icon matListItemIcon>people</mat-icon>
+        <div matListItemTitle>Clientes</div>
+      </a>
+      <a mat-list-item routerLink="/ventas" routerLinkActive="active-link">
+        <mat-icon matListItemIcon>point_of_sale</mat-icon>
+        <div matListItemTitle>Ventas</div>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
