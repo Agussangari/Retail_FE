@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ClientesService {
-  private apiUrl = `${environment.apiUrl}/customers`; // Match backend route or general route
+  private apiUrl = `${environment.apiUrl}/clientes`;
 
   constructor(private http: HttpClient) {}
 

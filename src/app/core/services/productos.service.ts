@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductosService {
-  private apiUrl = `${environment.apiUrl}/products`;
+  private apiUrl = `${environment.apiUrl}/productos`;
 
   constructor(private http: HttpClient) {}
 
